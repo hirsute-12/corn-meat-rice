@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>八卦山古蹟巡禮 - 活動報名</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box; /* 確保寬度包含 padding */
+            font-size: 1rem;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.3);
+        }
+        .radio-group {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .radio-option {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .radio-option input {
+            margin-right: 10px;
+        }
+        .btn-group {
+            text-align: center;
+            display: flex;
+            gap: 10px;
+        }
+        input[type="submit"], input[type="reset"] {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        input[type="reset"] {
+            background-color: #95a5a6;
+            color: white;
+        }
+        input[type="reset"]:hover {
+            background-color: #7f8c8d;
+        }
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>八卦山古蹟巡禮</h1>
+        
+        <form id="form1" name="form1" method="post" action="vote.php">
+            <div class="input-group">
+                <label for="text1">預約日期</label>
+                <input type="text" name="text1" id="text1" placeholder="例如：2026-05-20" />
+            </div>
+
+            <div class="input-group">
+                <label for="text2">報名姓名</label>
+                <input type="text" name="text2" id="text2" />
+            </div>
+
+            <label>選擇想參觀的景點 (單選)</label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="monument" value="park" /> 乙未戰爭紀念公園
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="monument" value="fort" /> 砲台
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="monument" value="buddha" /> 大佛
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="monument" value="bridge" /> 八卦山鐵橋
+                </label>
+            </div>
+
+            <div class="btn-group">
+                <input type="submit" name="button1" id="button1" value="確認送出" />
+                <input type="reset" name="button2" id="button2" value="清除重寫" />
+            </div>
+        </form>
+
+        <a href="互動式網頁設計期中報告.html" class="back-home">← 回到首頁</a>
+    </div>
+</body>
+</html>

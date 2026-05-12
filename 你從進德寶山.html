@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <title>你從進德寶山 - 彰師校區馬拉松</title>
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .strava-header {
+            background-color: #fc4c02; /* Strava 招牌橘色 */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .intro-text {
+            padding: 20px;
+            background: #fff5f0;
+            border-left: 5px solid #fc4c02;
+            margin: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        /* 運動數據列 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .stat-item {
+            border-right: 1px solid #eee;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fc4c02;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+        }
+        /* 地圖軌跡模擬區 */
+        .map-placeholder {
+            margin: 20px;
+            height: 250px;
+            background-color: #e5e3df;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        .map-line {
+            width: 80%;
+            height: 60%;
+            border: 3px dashed #fc4c02;
+            border-radius: 50% 20% 40% 10%;
+            position: absolute;
+        }
+        /* 報名表單區 */
+        .form-section {
+            padding: 30px;
+            background-color: #fafafa;
+            border-top: 1px solid #eee;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-submit {
+            flex: 1;
+            background-color: #fc4c02;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-reset {
+            flex: 1;
+            background-color: #999;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .footer-link {
+            text-align: center;
+            padding: 20px;
+        }
+        .footer-link a {
+            color: #fc4c02;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="strava-header">
+        <h1>🏃 你從進德寶山</h1>
+    </div>
+
+    <div class="intro-text">
+        彰師大進德到寶山 4.5 公里，用跑的就到啦！
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-item">
+            <div class="stat-value">4.50 km</div>
+            <div class="stat-label">距離</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">6'15"</div>
+            <div class="stat-label">平均配速</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">28:07</div>
+            <div class="stat-label">時間</div>
+        </div>
+    </div>
+
+    <div class="map-placeholder">
+        <div class="map-line"></div>
+        <span style="color: #666; font-style: italic;">[ 運動軌跡：進德校區 ➔ 寶山校區 ]</span>
+    </div>
+
+    <div class="form-section">
+        <h3 style="text-align: center;">挑戰者報名表</h3>
+        <form action="vote.php" method="post">
+            <div class="input-group">
+                <label>挑戰日期</label>
+                <input type="text" name="date" placeholder="YYYY-MM-DD" />
+            </div>
+            <div class="input-group">
+                <label>跑者姓名</label>
+                <input type="text" name="name" />
+            </div>
+            <div class="input-group">
+                <label>挑戰類型</label>
+ <button type="button" onClick="getLocation()">一鍵定位!</button>
+<p id="demo"></p>
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function success(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+function error() {
+  alert("Sorry, no position available.");
+}
+</script>
+                <div style="margin-top: 10px;">
+                    <label style="font-weight: normal;"><input type="radio" name="type" value="run" checked> 認真跑步</label>
+                    <label style="font-weight: normal;"><input type="radio" name="type" value="walk"> 散步健行</label>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <input type="submit" class="btn-submit" value="開始挑戰" />
+                <input type="reset" class="btn-reset" value="重新填寫" />
+            </div>
+        </form>
+    </div>
+
+    <div class="footer-link">
+        <a href="互動式網頁設計期中報告.html">← 回到彰化一網通首頁</a>
+    </div>
+</div>
+
+
+</body>
+</html>
