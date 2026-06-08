@@ -162,13 +162,65 @@
         <span style="color: #666; font-style: italic;">[ 運動軌跡：進德校區 ➔ 寶山校區 ]</span>
     </div>
 
-    <div class="form-section">
+   <div class="form-section">
         <h3 style="text-align: center;">挑戰者報名表</h3>
-        <form action="vote.php" method="post">
+        <form action="marathon_submit.php" method="post">
+            
+            <input type="hidden" name="lat" id="hidden_lat" value="">
+            <input type="hidden" name="lng" id="hidden_lng" value="">
+
             <div class="input-group">
                 <label>挑戰日期</label>
-                <input type="text" name="date" placeholder="YYYY-MM-DD" />
+                <input type="text" name="date" placeholder="YYYY-MM-DD" required />
             </div>
+            <div class="input-group">
+                <label>跑者姓名</label>
+                <input type="text" name="name" required />
+            </div>
+            <div class="input-group">
+                <label>挑戰類型</label>
+                <button type="button" onClick="getLocation()" style="background:#fc4c02; color:white; border:none; padding:5px 10px; border-radius:3px; cursor:pointer;">一鍵定位!</button>
+                <p id="demo" style="font-size:0.9rem; color:#666; margin: 5px 0;"></p>
+                
+                <script>
+                const x = document.getElementById("demo");
+                // 取得隱藏欄位的 DOM
+                const hiddenLat = document.getElementById("hidden_lat");
+                const hiddenLng = document.getElementById("hidden_lng");
+
+                function getLocation() {
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(success, error);
+                  } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                  }
+                }
+
+                function success(position) {
+                  // 1. 顯示在畫面上給使用者看
+                  x.innerHTML = "緯度: " + position.coords.latitude + "<br>經度: " + position.coords.longitude;
+                  // 2. 自動塞入隱藏輸入框，準備隨表單送出
+                  hiddenLat.value = position.coords.latitude;
+                  hiddenLng.value = position.coords.longitude;
+                }
+
+                function error() {
+                  alert("無法取得位置，但您仍可繼續報名。");
+                }
+                </script>
+                
+                <div style="margin-top: 10px;">
+                    <label style="font-weight: normal;"><input type="radio" name="type" value="run" checked> 認真跑步</label>
+                    <label style="font-weight: normal;"><input type="radio" name="type" value="walk"> 散步健行</label>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <input type="submit" class="btn-submit" value="開始挑戰" />
+                <input type="reset" class="btn-reset" value="重新填寫" />
+            </div>
+        </form>
+    </div>
             <div class="input-group">
                 <label>跑者姓名</label>
                 <input type="text" name="name" />
