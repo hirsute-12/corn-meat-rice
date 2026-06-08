@@ -34,7 +34,7 @@ $lat_clean = $conn->real_escape_string($latitude);
 $lng_clean = $conn->real_escape_string($longitude);
 
 // 寫入資料庫
-$sql = "INSERT INTO form_marathon (challenge_date, runner_name, challenge_type, latitude, longitude) 
+$sql = "INSERT INTO form_run (challenge_date, runner_name, challenge_type, latitude, longitude) 
         VALUES ('$date_clean', '$name_clean', '$type_clean', '$lat_clean', '$lng_clean')";
 
 if ($conn->query($sql) === TRUE) {
